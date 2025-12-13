@@ -1,0 +1,9 @@
+{
+	"name": "dataf-azureproject",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "6766f15e-576b-4dad-8a10-91b535b884ce",
+		"tenantId": "6ac3d240-938f-44e6-975b-f46df717b341"
+	}
+}
