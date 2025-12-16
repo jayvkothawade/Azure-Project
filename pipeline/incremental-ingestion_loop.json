@@ -38,7 +38,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "SELECT * FROM @{pipeline().parameters.schema}.@{pipeline().parameters.table} WHERE @{pipeline().parameters.cdc_col} > '@{if(empty(pipeline().parameters.from_date),activity('last_cdc').output.value[0].cdc,pipeline().parameters.from_date)}'\n",
+										"value": "SELECT * FROM @{item().schema}.@{item().table} WHERE @{item().cdc_col} > '@{if(empty(item().from_date),activity('last_cdc').output.value[0].cdc,item().from_date)}'\n",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
@@ -76,11 +76,11 @@
 									"parameters": {
 										"container": "bronze",
 										"folder": {
-											"value": "@pipeline().parameters.table",
+											"value": "@item().table",
 											"type": "Expression"
 										},
 										"file": {
-											"value": "@concat(pipeline().parameters.table, '_', variables('current'))\n",
+											"value": "@concat(item().table, '_', variables('current'))\n",
 											"type": "Expression"
 										}
 									}
@@ -117,7 +117,7 @@
 									"parameters": {
 										"container": "bronze",
 										"folder": {
-											"value": "@{pipeline().parameters.table}_cdc",
+											"value": "@{item().table}_cdc",
 											"type": "Expression"
 										},
 										"file": "cdc.json"
@@ -217,7 +217,7 @@
 												{
 													"type": "Query",
 													"text": {
-														"value": "SELECT MAX(@{pipeline().parameters.cdc_col}) as cdc FROM @{pipeline().parameters.schema}.@{pipeline().parameters.table}",
+														"value": "SELECT MAX(@{item().cdc_col}) as cdc FROM @{item().schema}.@{item().table}",
 														"type": "Expression"
 													}
 												}
@@ -294,7 +294,7 @@
 												"parameters": {
 													"container": "bronze",
 													"folder": {
-														"value": "@{pipeline().parameters.table}_cdc",
+														"value": "@{item().table}_cdc",
 														"type": "Expression"
 													},
 													"file": "cdc.json"
@@ -310,20 +310,9 @@
 			}
 		],
 		"parameters": {
-			"schema": {
-				"type": "string",
-				"defaultValue": "dbo"
-			},
-			"table": {
-				"type": "string",
-				"defaultValue": "DimUser"
-			},
-			"cdc_col": {
-				"type": "string",
-				"defaultValue": "updated_at"
-			},
-			"from_date": {
-				"type": "string"
+			"loop_input": {
+				"type": "array",
+				"defaultValue": "[ \t{ \t\t\"schema\" : \"dbo\" \t\t\"table\" : \"DimUser\", \t\t\"cdc_col\" : \"updated_at\", \t\t\"from_date\" : \"\" \t}, \t{ \t\t\"schema\" : \"dbo\" \t\t\"table\" : \"DimTrack\", \t\t\"cdc_col\" : \"updated_at\", \t\t\"from_date\" : \"\" \t}, \t{ \t\t\"schema\" : \"dbo\" \t\t\"table\" : \"DimDate\", \t\t\"cdc_col\" : \"updated_at\", \t\t\"from_date\" : \"\" \t}, \t{ \t\t\"schema\" : \"dbo\" \t\t\"table\" : \"DimArtist\", \t\t\"cdc_col\" : \"updated_at\", \t\t\"from_date\" : \"\" \t}, \t{ \t\t\"schema\" : \"dbo\" \t\t\"table\" : \"FactStream\", \t\t\"cdc_col\" : \"updated_at\", \t\t\"from_date\" : \"\" \t} ]"
 			}
 		},
 		"variables": {
