@@ -290,7 +290,10 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"container": "bronze",
-													"folder": "CDC",
+													"folder": {
+														"value": "@{item().table}_cdc",
+														"type": "Expression"
+													},
 													"file": "empty.json"
 												}
 											}
