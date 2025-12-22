@@ -1,4 +1,4 @@
-# 🚀 End-to-End Azure Data Engineering Project  
+# 🚀 End-to-End Azure Data Engineering Project (Use Case : Spotify)  
 **Azure SQL → ADF → ADLS Gen2 → Databricks → DLT (Gold) with AutoCDC**
 
 ---
@@ -175,3 +175,59 @@ This project uses **Databricks Asset Bundles** for:
 - Version-controlled deployments
 
 ---
+
+## 🚀 How to Deploy & Run
+
+### 1️⃣ Clone Repository
+
+git clone https://github.com/yourusername/azure-end-to-end-data-engineering.git
+
+### 2️⃣ Deploy Databricks Asset Bundle
+databricks bundle deploy
+
+### 3️⃣ Trigger ADF Pipeline
+
+Run the incremental ingestion pipeline
+
+Data lands in the Bronze layer
+
+### 4️⃣ Run Databricks Workflows
+
+Silver transformations execute
+
+DLT pipeline builds Gold tables
+
+
+### 📊 Data Quality & Monitoring
+
+DLT enforces data quality rules
+
+Pipeline health visible in Databricks UI
+
+Failed records can be quarantined
+
+End-to-end data lineage supported
+
+
+### 📸 Screenshots
+
+The screenshots/ directory contains:
+
+ADF pipeline design
+
+DLT pipeline DAG
+
+### 🧠 Key Learnings & Skills Demonstrated
+
+✔ Incremental ingestion using Azure Data Factory
+
+✔ Medallion architecture implementation
+
+✔ Databricks Delta & Delta Live Tables (DLT)
+
+✔ AutoCDC for change data capture
+
+✔ Databricks Asset Bundles & IaC concepts
+
+✔ Production-ready Azure data pipelines
+
