@@ -137,3 +137,12 @@ databricks bundle deploy
 - AutoCDC
 - Asset Bundles & IaC
 - Production-grade pipelines
+
+## 🧑‍💻 Author
+### Jay Kothawade
+**Azure Data Engineer**
+
+GitHub: https://github.com/jayvkothawade
+
+LinkedIn: https://linkedin.com/in/jaykothawade
+
