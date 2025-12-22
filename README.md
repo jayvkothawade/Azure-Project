@@ -1,3 +1,21 @@
+# 🚀 End-to-End Azure Data Engineering Project  
+**Azure SQL → ADF → ADLS Gen2 → Databricks → DLT (Gold) with AutoCDC**
+
+---
+
+## 📌 Project Overview
+
+This project demonstrates an **end-to-end Azure Data Engineering pipeline** that ingests data from an **Azure SQL Database**, performs **incremental ingestion using Azure Data Factory**, applies transformations using **Azure Databricks**, and builds **Gold-layer curated tables using Databricks Delta Live Tables (DLT) with AutoCDC enabled**.
+
+The solution follows the **Medallion Architecture (Bronze → Silver → Gold)** and uses **Databricks Asset Bundles** for deployment and environment management.
+
+---
+
+## 🏗️ High-Level Architecture
+
+**Source → Ingestion → Storage → Transformation → Curated Analytics**
+
+<img width="321" height="363" alt="image" src="https://github.com/user-attachments/assets/89b46b1f-f366-4e5a-a731-7a9864011dd3" />
 
 ---
 
@@ -31,7 +49,7 @@
 
 ### 🔹 Incremental Load Strategy
 
-- A **CDC / watermark column** (e.g., `LastModifiedDate` or `CDC_Timestamp`) is used to identify new records
+- A **CDC / watermark column** ('updated_at, date_key') is used to identify new records
 - The pipeline maintains the **last successfully processed timestamp**
 - Each execution fetches **only records greater than the stored watermark**, avoiding full reloads and improving performance
 
