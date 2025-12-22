@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "dataf-azureproject"
+		},
+		"ls_DataLake_accountKey": {
+			"value": ""
+		},
+		"ls_azuresqldb_password": {
+			"value": ""
+		},
+		"ls_DataLake_properties_typeProperties_url": {
+			"value": "https://jayazureproject.dfs.core.windows.net/"
+		},
+		"ls_azuresqldb_properties_typeProperties_server": {
+			"value": "server-azureproject.database.windows.net"
+		},
+		"ls_azuresqldb_properties_typeProperties_database": {
+			"value": "db-azureproject"
+		},
+		"ls_azuresqldb_properties_typeProperties_userName": {
+			"value": "jayadmin"
+		}
+	}
+}
