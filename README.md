@@ -1,4 +1,4 @@
-# 🚀 End-to-End Azure Data Engineering Project (Use Case: Spotify)
+# 🚀 End-to-End Azure Data Engineering Project
 **Azure SQL → ADF → ADLS Gen2 → Databricks → Delta Live Tables (Gold) with AutoCDC**
 
 ---
